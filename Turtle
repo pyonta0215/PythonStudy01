@@ -1,0 +1,7 @@
+from turtle import *
+
+for i in range(1, 4):
+    forward(100)
+    right(120)
+
+input("終了するなら何かキーを押してね")
