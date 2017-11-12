@@ -38,4 +38,36 @@ def move_ship(event):
 
 c.bind_all('<Key>', move_ship)
 
-window.mainloop()
+from random import randint
+
+bub_id = list()
+bub_r = list()
+bub_speed = list()
+
+MIN_BUB_R = 10
+MAX_BUB_R = 30
+MAX_BUB_SPEED = 10
+GAP = 100
+
+def create_bubble():
+    x = WIDTH + GAP
+    y = randint(0, HEIGHT)
+    r = randint(MIN_BUB_R, MAX_BUB_R)
+    id1 = c.create_oval(x - r, y - r, x + r, y + r, outline='white')
+    bub_id.append(id1)
+    bub_r.append(r)
+    bub_speed.append(randint(1, MAX_BUB_SPEED))
+
+def move_bubbles():
+    for i in range(len(bub_id)):
+        c.move(bub_id[i], -bub_speed[i], 0)
+
+from time import sleep, time
+BUB_CHANCE = 10
+
+while True:
+    if randint(1, BUB_CHANCE) == 1:
+        create_bubble()
+    move_bubbles()
+    window.update()
+    sleep(0.01)
