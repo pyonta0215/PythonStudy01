@@ -1,0 +1,12 @@
+name = ['タカシが','ニュートンが','パスカルが']
+noun = ['ライオンを','自転車を','飛行機を']
+verb = ['買う','乗り回す','たたく']
+
+from random import randint
+def pick(words):
+    num_words = len(words)
+    num_picked = randint(0, num_words - 1)
+    word_picked = words[num_picked]
+    return word_picked
+
+print(pick(name), pick(noun), pick(verb), end='。\n')
