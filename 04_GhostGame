@@ -6,15 +6,18 @@ feeling_brave = True
 score = 0
 
 while feeling_brave:
+    
     ghost_door = randint(1, 3)
     print('ドアが３つある')
     print('そのうち１つのドアの向こうにゆうれいがいる')
     print('さあ、何番のドアを開ける？')
     door = input('１、２、それとも３？')
     door_num = int(door)
+
     if door_num == ghost_door:
         print('ゆうれいだ！')
         feeling_brave = False
+
     else:
         print('ゆうれいはいなかった')
         print('となりの部屋に入れたよ')
