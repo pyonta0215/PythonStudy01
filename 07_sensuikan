@@ -80,8 +80,24 @@ def clean_up_bubbles():
         if x < -GAP:
             delete_bubble(i)
 
+from math import sqrt
+def distance(id1, id2):
+    x1, y1 = get_coords(id1)
+    x2, y2 = get_coords(id2)
+    return sqrt( (x2 - x1) ** 2 + (y2 - y1) ** 2 )
+
+def collision():
+    points = 0
+    for bub in range(len(bub_id) -1, -1, -1):
+        if distance(ship_id2, bub_id[bub]) < (SHIP_R + bub_r[bub]):
+            points += (bub_r[bub] + bub_speed[bub])
+            delete_bubble(bub)
+    return points
+
+
 from time import sleep, time
 BUB_CHANCE = 10
+score = 0
 
 # main loop
 while True:
@@ -91,6 +107,8 @@ while True:
 
     move_bubbles()
     clean_up_bubbles()
+    score += collision()
+    print(score)
 
     window.update()
     sleep(0.01)
