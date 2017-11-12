@@ -1,0 +1,15 @@
+from tkinter import *
+
+def bAaction():
+    print('ありがとう')
+
+def bBaction():
+    print('いたい！ひどいじゃないか！')
+
+window = Tk()
+buttonA = Button(window, text='押して！', command=bAaction)
+buttonB = Button(window, text='押さないで！', command=bBaction)
+buttonA.pack()
+buttonB.pack()
+
+window.mainloop()
