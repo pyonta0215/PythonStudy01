@@ -1,0 +1,3 @@
+target_word = "AAA-BBB_CCCCCCCCCC_DDDD_EE_FF-GG.ext"
+
+print(target_word)
