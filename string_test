@@ -1,3 +1,15 @@
 target_word = "AAA-BBB_CCCCCCCCCC_DDDD_EE_FF-GG.ext"
 
 print(target_word)
+
+def Left(string, cut_num):
+    return string[:cut_num]
+
+
+def Right(string, cut_num):
+    return string[cut_num:]
+
+
+print(Right(target_word, 3))
+
+print(Left(target_word, 3))
