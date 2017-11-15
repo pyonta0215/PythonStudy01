@@ -5,11 +5,14 @@ print(target_word)
 def Left(string, cut_num):
     return string[:cut_num]
 
-
 def Right(string, cut_num):
     return string[cut_num:]
 
+def Mid(string, num_before, num_after):
+    return string[num_before:num_after]
 
 print(Right(target_word, 3))
 
 print(Left(target_word, 3))
+
+print(Mid(target_word, 3, 5))
