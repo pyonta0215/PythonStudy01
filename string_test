@@ -5,18 +5,23 @@ UNDERBAR = "_"
 CENTERBAR = "-"
 
 def Main():
-    print(target_word)
-    print(Right(target_word, 3))
-    print(Left(target_word, 3))
-    print(Mid(target_word, 3, 5))
-    print(InStr(target_word, "C"))
-    print(Reverse(target_word))
+    print (target_word)
+    print (Right(target_word, 3))
+    print (Left(target_word, 3))
+    print (Mid(target_word, 3, 5))
+    print (InStr(target_word, "C"))
+    print (Reverse(target_word))
 
     print (Cut_Right(target_word, DOT))
+    print (Cut_Left(target_word, DOT))
 
 def Cut_Right(string, separator):
     rstring = Reverse(string)
     return Left(string, len(string) - InStr(rstring, separator) - 1)
+
+def Cut_Left(string, separator):
+    rstring = Reverse(string)
+    return Right(string, len(string) - InStr(rstring, separator))
 
 def Left(string, cut_num):
     return string[:cut_num]
