@@ -10,6 +10,7 @@ def Main():
     print(Left(target_word, 3))
     print(Mid(target_word, 3, 5))
     print(InStr(target_word, "C"))
+    print(Reverse(target_word))
 
 def Left(string, cut_num):
     return string[:cut_num]
@@ -22,5 +23,8 @@ def Mid(string, num_before, num_after):
 
 def InStr(target, query):
     return target.find(query)
+
+def Reverse(target):
+    return target[::-1]
 
 Main()
