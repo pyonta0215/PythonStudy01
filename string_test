@@ -12,6 +12,12 @@ def Main():
     print(InStr(target_word, "C"))
     print(Reverse(target_word))
 
+    print (Cut_Right(target_word, DOT))
+
+def Cut_Right(string, separator):
+    rstring = Reverse(string)
+    return Left(string, len(string) - InStr(rstring, separator) - 1)
+
 def Left(string, cut_num):
     return string[:cut_num]
 
@@ -21,10 +27,10 @@ def Right(string, cut_num):
 def Mid(string, num_before, num_after):
     return string[num_before:num_after]
 
-def InStr(target, query):
-    return target.find(query)
+def InStr(string, query):
+    return string.find(query)
 
-def Reverse(target):
-    return target[::-1]
+def Reverse(string):
+    return string[::-1]
 
 Main()
