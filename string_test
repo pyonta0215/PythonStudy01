@@ -4,7 +4,12 @@ DOT = "."
 UNDERBAR = "_"
 CENTERBAR = "-"
 
-print(target_word)
+def Main():
+    print(target_word)
+    print(Right(target_word, 3))
+    print(Left(target_word, 3))
+    print(Mid(target_word, 3, 5))
+    print(InStr(target_word, "C"))
 
 def Left(string, cut_num):
     return string[:cut_num]
@@ -18,10 +23,4 @@ def Mid(string, num_before, num_after):
 def InStr(target, query):
     return target.find(query)
 
-print(Right(target_word, 3))
-
-print(Left(target_word, 3))
-
-print(Mid(target_word, 3, 5))
-
-print(InStr(target_word, "C"))
+Main()
