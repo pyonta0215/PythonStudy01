@@ -23,18 +23,30 @@ SHIP_SPEED = 10
 
 def move_ship(event):
     if event.keysym == 'Up':
-        c.move(ship_id, 0, -SHIP_SPEED)
-        c.move(ship_id2, 0, -SHIP_SPEED)
+        move_up(ship_id)
+        move_up(ship_id2)
     elif event.keysym == 'Down':
-        c.move(ship_id, 0, SHIP_SPEED)
-        c.move(ship_id2, 0, SHIP_SPEED)
+        move_down(ship_id)
+        move_down(ship_id2)
     elif event.keysym == 'Left':
-        c.move(ship_id, -SHIP_SPEED, 0)
-        c.move(ship_id2, -SHIP_SPEED, 0)
+        move_left(ship_id)
+        move_left(ship_id2)
     elif event.keysym == 'Right':
-        c.move(ship_id, SHIP_SPEED, 0)
-        c.move(ship_id2, SHIP_SPEED, 0)
+        move_right(ship_id)
+        move_right(ship_id2)
     window.update()
+
+def move_up(id):
+    c.move(id, 0, -SHIP_SPEED)
+
+def move_down(id):
+    c.move(id, 0, SHIP_SPEED)
+
+def move_left(id):
+    c.move(id, -SHIP_SPEED, 0)
+
+def move_right(id):
+    c.move(id, SHIP_SPEED, 0)
 
 c.bind_all('<Key>', move_ship)
 
