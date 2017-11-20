@@ -84,19 +84,6 @@ def move_ships():
     move(ship_id)
     move(ship_id2)
 
-
-def move_up(id):
-    c.move(id, 0, -SHIP_SPEED)
-
-def move_down(id):
-    c.move(id, 0, SHIP_SPEED)
-
-def move_left(id):
-    c.move(id, -SHIP_SPEED, 0)
-
-def move_right(id):
-    c.move(id, SHIP_SPEED, 0)
-
 def move(id):
     c.move(id, SHIP_X_ACCELARATION, SHIP_Y_ACCELARATION)
 
