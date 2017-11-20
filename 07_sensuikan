@@ -19,22 +19,71 @@ MID_Y = HEIGHT / 2
 c.move(ship_id, MID_X, MID_Y)
 c.move(ship_id2, MID_X, MID_Y)
 
-SHIP_SPEED = 10
+SHIP_SPEED = 2
+SHIP_X_ACCELARATION = 0
+SHIP_Y_ACCELARATION = 0
+SHIP_MAX_SPEED = 10
 
 def move_ship(event):
     if event.keysym == 'Up':
-        move_up(ship_id)
-        move_up(ship_id2)
+        set_accelaration('U')
     elif event.keysym == 'Down':
-        move_down(ship_id)
-        move_down(ship_id2)
+        set_accelaration('D')
     elif event.keysym == 'Left':
-        move_left(ship_id)
-        move_left(ship_id2)
+        set_accelaration('L')
     elif event.keysym == 'Right':
-        move_right(ship_id)
-        move_right(ship_id2)
-    window.update()
+        set_accelaration('R')
+
+
+def set_accelaration(event):
+
+    global SHIP_Y_ACCELARATION
+    global SHIP_X_ACCELARATION
+
+    if event in {'U', 'D', 'L', 'R'}:
+
+        if event == 'U':
+            SHIP_Y_ACCELARATION += -SHIP_SPEED
+        elif event == 'D':
+            SHIP_Y_ACCELARATION += SHIP_SPEED
+        elif event == 'L':
+            SHIP_X_ACCELARATION += -SHIP_SPEED
+        elif event == 'R':
+            SHIP_X_ACCELARATION += SHIP_SPEED
+
+        if SHIP_X_ACCELARATION > SHIP_MAX_SPEED:
+            SHIP_X_ACCELARATION = SHIP_MAX_SPEED
+        elif SHIP_X_ACCELARATION < -SHIP_MAX_SPEED:
+            SHIP_X_ACCELARATION = -SHIP_MAX_SPEED
+
+        if SHIP_Y_ACCELARATION > SHIP_MAX_SPEED:
+            SHIP_Y_ACCELARATION = SHIP_MAX_SPEED
+        elif SHIP_Y_ACCELARATION < -SHIP_MAX_SPEED:
+            SHIP_Y_ACCELARATION = -SHIP_MAX_SPEED
+
+STOP_POWER = 0.2
+
+def move_ships():
+    global SHIP_Y_ACCELARATION
+    global SHIP_X_ACCELARATION
+
+    if SHIP_Y_ACCELARATION == 0:
+        SHIP_Y_ACCELARATION = 0
+    elif SHIP_Y_ACCELARATION > 0:
+        SHIP_Y_ACCELARATION -= STOP_POWER
+    elif SHIP_Y_ACCELARATION < 0:
+        SHIP_Y_ACCELARATION += STOP_POWER
+
+    if SHIP_X_ACCELARATION == 0:
+        SHIP_X_ACCELARATION = 0
+    elif SHIP_X_ACCELARATION > 0:
+        SHIP_X_ACCELARATION -= STOP_POWER
+    elif SHIP_X_ACCELARATION < 0:
+        SHIP_X_ACCELARATION += STOP_POWER
+
+    move(ship_id)
+    move(ship_id2)
+
 
 def move_up(id):
     c.move(id, 0, -SHIP_SPEED)
@@ -47,6 +96,10 @@ def move_left(id):
 
 def move_right(id):
     c.move(id, SHIP_SPEED, 0)
+
+def move(id):
+    c.move(id, SHIP_X_ACCELARATION, SHIP_Y_ACCELARATION)
+
 
 c.bind_all('<Key>', move_ship)
 
@@ -134,6 +187,7 @@ while time() < end:
         create_bubble()
 
     move_bubbles()
+    move_ships()
     clean_up_bubbles()
     score += collision()
 
